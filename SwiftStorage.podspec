@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'Storage'
+  s.name             = 'SwiftStorage'
   s.version          = '0.1.0'
   s.summary          = 'One stop place for all your storage.'
 
