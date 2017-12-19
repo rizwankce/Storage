@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Storage
+import SwiftStorage
 
 enum Result<T> {
     case success(T)

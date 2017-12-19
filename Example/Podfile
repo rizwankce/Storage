@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'Storage_Example' do
-  pod 'Storage', :path => '../'
+  pod 'SwiftStorage', :path => '../'
 
   target 'Storage_Tests' do
     inherit! :search_paths

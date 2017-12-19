@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## Storage
+## SwiftStorage
 
 Copyright (c) 2017 rizwankce <rizwankce@users.noreply.github.com>
 

@@ -1,6 +1,6 @@
 import UIKit
 import XCTest
-import Storage
+import SwiftStorage
 
 class Tests: XCTestCase {
     

@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double StorageVersionNumber;
-FOUNDATION_EXPORT const unsigned char StorageVersionString[];
+FOUNDATION_EXPORT double SwiftStorageVersionNumber;
+FOUNDATION_EXPORT const unsigned char SwiftStorageVersionString[];
 
