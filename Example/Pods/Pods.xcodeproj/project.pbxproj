@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D2016DE1067AD5E6AC0F9A7FF14A986 /* Storage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5209A0056BC2D7DF55E94B48E6236E94 /* Storage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D2016DE1067AD5E6AC0F9A7FF14A986 /* Storage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 52CC4C36DB8480F61E7F3F4270F211F6 /* Storage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45E7BDDF370E7DC9C0E742CBFEC05694 /* Storage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDCA67874001FAC1C24CC884EBB2BEF /* Storage-dummy.m */; };
 		4F9DA5692688F640BB800BD83836FC15 /* Pods-Storage_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3026F6B41BEB17D0FB528F9AD5C18BFE /* Pods-Storage_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		741D41EC1B9E0AFC4FCCF281FE02E489 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602CD904BADEAACB864AB77E3FDD66BA /* ReplaceMe.swift */; };
+		64526530D741DABFC0C8BEC7DC9FE1AF /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB09FDF24BADF766825C4743BE264407 /* Storage.swift */; };
 		8EF9AEABA73BFB88BA4DA3C34F720471 /* Pods-Storage_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 171E02AA2192EDFB68BAD6AF2282226B /* Pods-Storage_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		91621CF35820FDB0E1C794B748338FDA /* StorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1AB6B71ABF64FBB77B34562EBF93E /* StorageType.swift */; };
 		999A3060664FDB140F6E0F7B70D63444 /* Pods-Storage_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0944F8AF2846EC44AA9D5361D014010D /* Pods-Storage_Tests-dummy.m */; };
 		99AB37D0CA2C3A67EA895C41558CE0E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		C0DBF171A9798F0518A3CF0F7EBD6997 /* Pods-Storage_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8516D30D30F78CAEDAE6C44F20EAB6 /* Pods-Storage_Example-dummy.m */; };
 		C7D25616032E1FF13807D8E33C76ACDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		CCC88FF8C9D63FD0DBFD0AC0E089F08F /* Storage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15EC0435613ED0C26CAF649C3FB00A37 /* Storage-dummy.m */; };
 		FB562CED83DA170CC8641D44E57E3970 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,37 +32,38 @@
 
 /* Begin PBXFileReference section */
 		004DA76F7AFB3043E5323325885412B2 /* Pods-Storage_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Storage_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		01CDA5F71CDA6342D243116D14F35C46 /* Storage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Storage.modulemap; sourceTree = "<group>"; };
 		0944F8AF2846EC44AA9D5361D014010D /* Pods-Storage_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Storage_Tests-dummy.m"; sourceTree = "<group>"; };
-		13EBEEBC8B58ADFFC4E15875DB273F83 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Storage.framework; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		15EC0435613ED0C26CAF649C3FB00A37 /* Storage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Storage-dummy.m"; sourceTree = "<group>"; };
+		13EBEEBC8B58ADFFC4E15875DB273F83 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		171E02AA2192EDFB68BAD6AF2282226B /* Pods-Storage_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Storage_Tests-umbrella.h"; sourceTree = "<group>"; };
+		1CF0072C9B5F8C76A9407D793E1EDA9A /* Storage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Storage-prefix.pch"; sourceTree = "<group>"; };
 		1D3B36A6350C1B8D681FC368E06C1CDE /* Pods-Storage_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Storage_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		1F8B0F117158D85CB11A5FCB59F84FDE /* Pods-Storage_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Storage_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		21E21F2AE6F2BDFD3D4832AE006361BF /* Pods-Storage_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Storage_Example-resources.sh"; sourceTree = "<group>"; };
 		272DEB835BD622D3898029BC8BFB3A64 /* Pods-Storage_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Storage_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		3026F6B41BEB17D0FB528F9AD5C18BFE /* Pods-Storage_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Storage_Example-umbrella.h"; sourceTree = "<group>"; };
 		3E8516D30D30F78CAEDAE6C44F20EAB6 /* Pods-Storage_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Storage_Example-dummy.m"; sourceTree = "<group>"; };
-		3FF75CE64CBB2B7734AFBE5985B4484C /* Pods-Storage_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Storage_Example.modulemap"; sourceTree = "<group>"; };
+		3FF75CE64CBB2B7734AFBE5985B4484C /* Pods-Storage_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Storage_Example.modulemap"; sourceTree = "<group>"; };
 		5111160915678CC76636E4D777F8B6AA /* Pods-Storage_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Storage_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		5209A0056BC2D7DF55E94B48E6236E94 /* Storage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Storage-umbrella.h"; sourceTree = "<group>"; };
-		602CD904BADEAACB864AB77E3FDD66BA /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = Storage/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
+		52CC4C36DB8480F61E7F3F4270F211F6 /* Storage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Storage-umbrella.h"; sourceTree = "<group>"; };
 		63A0C09983E9B229638678F41651AA10 /* Pods-Storage_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Storage_Tests-resources.sh"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6B5A0C20921D7081A0B5CA7D0BFB5B71 /* Pods-Storage_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Storage_Example-frameworks.sh"; sourceTree = "<group>"; };
-		781EEFC008380CDDF3D22E392406CDCF /* Pods-Storage_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Storage_Tests.modulemap"; sourceTree = "<group>"; };
+		781EEFC008380CDDF3D22E392406CDCF /* Pods-Storage_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Storage_Tests.modulemap"; sourceTree = "<group>"; };
 		78EE6B3E36D88901FE0FED822BBB09C2 /* Pods-Storage_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Storage_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7BED3863FFB3C758CE6B9CED9E23C1C0 /* Storage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Storage-prefix.pch"; sourceTree = "<group>"; };
-		7FEEFE736AD312893BE0448287C722E6 /* Pods_Storage_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Storage_Tests.framework; path = "Pods-Storage_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		903CB2657ADBA9B66FBF87E0B643C680 /* Storage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Storage.modulemap; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7FEEFE736AD312893BE0448287C722E6 /* Pods_Storage_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Storage_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93F012894C6C7CFFB9A636FBC1F97692 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A0F53B558E950911B50518E124CAE8D9 /* Pods_Storage_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Storage_Example.framework; path = "Pods-Storage_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0F53B558E950911B50518E124CAE8D9 /* Pods_Storage_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Storage_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD34435F8D87AA3E1FCB49AE247EC55C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3E1AB6B71ABF64FBB77B34562EBF93E /* StorageType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorageType.swift; path = Storage/Classes/StorageType.swift; sourceTree = "<group>"; };
 		C859D4FF3E6CB8FC242F4B3AE8CF8A30 /* Pods-Storage_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Storage_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		CBCB87B5DB7BCD590277B406197B6AD3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBDCA67874001FAC1C24CC884EBB2BEF /* Storage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Storage-dummy.m"; sourceTree = "<group>"; };
 		CE8464F74DCD3F08703741DBD16ADAB2 /* Pods-Storage_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Storage_Example.release.xcconfig"; sourceTree = "<group>"; };
-		DB2259F5622C5D354773D30E3C0F4B88 /* Storage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Storage.xcconfig; sourceTree = "<group>"; };
 		DF7FBB96F43A1C583275363C3D7B6F3E /* Pods-Storage_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Storage_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		DFA14318BEEC26A628C3E37697BA5BD2 /* Storage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Storage.xcconfig; sourceTree = "<group>"; };
+		F57C165BC661F247C5DFA4A6CC42B89D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB09FDF24BADF766825C4743BE264407 /* Storage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Storage.swift; path = Storage/Classes/Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,22 +112,18 @@
 			path = "Target Support Files/Pods-Storage_Tests";
 			sourceTree = "<group>";
 		};
-		0BEDD5163E5028481603C5DBB9D10740 /* Storage */ = {
+		41D59B8A6056B6FB1CA0F2E480CF8903 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				602CD904BADEAACB864AB77E3FDD66BA /* ReplaceMe.swift */,
-				C562DC67D5C4BBA3DE3166818992C1C7 /* Support Files */,
+				F57C165BC661F247C5DFA4A6CC42B89D /* Info.plist */,
+				01CDA5F71CDA6342D243116D14F35C46 /* Storage.modulemap */,
+				DFA14318BEEC26A628C3E37697BA5BD2 /* Storage.xcconfig */,
+				CBDCA67874001FAC1C24CC884EBB2BEF /* Storage-dummy.m */,
+				1CF0072C9B5F8C76A9407D793E1EDA9A /* Storage-prefix.pch */,
+				52CC4C36DB8480F61E7F3F4270F211F6 /* Storage-umbrella.h */,
 			);
-			name = Storage;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		2819404CDD8CA9C316A779F4560B9FB1 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0BEDD5163E5028481603C5DBB9D10740 /* Storage */,
-			);
-			name = "Development Pods";
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Storage";
 			sourceTree = "<group>";
 		};
 		5101E164B20E379F3AE695F9217660A6 /* Products */ = {
@@ -142,11 +140,19 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				2819404CDD8CA9C316A779F4560B9FB1 /* Development Pods */,
+				8F9F4CE40545590464D51FF29E813A32 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				5101E164B20E379F3AE695F9217660A6 /* Products */,
 				BBA1BADD4C27D53335FEF00BFE8073E9 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		8F9F4CE40545590464D51FF29E813A32 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DECB7D8163B69189069A5643B431583D /* Storage */,
+			);
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		BBA1BADD4C27D53335FEF00BFE8073E9 /* Targets Support Files */ = {
@@ -166,26 +172,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C562DC67D5C4BBA3DE3166818992C1C7 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				CBCB87B5DB7BCD590277B406197B6AD3 /* Info.plist */,
-				903CB2657ADBA9B66FBF87E0B643C680 /* Storage.modulemap */,
-				DB2259F5622C5D354773D30E3C0F4B88 /* Storage.xcconfig */,
-				15EC0435613ED0C26CAF649C3FB00A37 /* Storage-dummy.m */,
-				7BED3863FFB3C758CE6B9CED9E23C1C0 /* Storage-prefix.pch */,
-				5209A0056BC2D7DF55E94B48E6236E94 /* Storage-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/Storage";
-			sourceTree = "<group>";
-		};
 		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		DECB7D8163B69189069A5643B431583D /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				FB09FDF24BADF766825C4743BE264407 /* Storage.swift */,
+				C3E1AB6B71ABF64FBB77B34562EBF93E /* StorageType.swift */,
+				41D59B8A6056B6FB1CA0F2E480CF8903 /* Support Files */,
+			);
+			name = Storage;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		FF78E0F49F70B95423487D20F6F920D3 /* Pods-Storage_Example */ = {
@@ -240,7 +243,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73034FD44DCD14051174280277932771 /* Build configuration list for PBXNativeTarget "Storage" */;
 			buildPhases = (
-				86C5FF189D3F3F208D9C4BC1BDAC6AA4 /* Sources */,
+				130BEB89DD74AD00A05C88DC237F82B7 /* Sources */,
 				175203167605761636012637DD8A83FB /* Frameworks */,
 				4BB3819B1D520CF0FEB11FE7830FD7A1 /* Headers */,
 			);
@@ -295,7 +298,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0920;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -325,12 +328,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		86C5FF189D3F3F208D9C4BC1BDAC6AA4 /* Sources */ = {
+		130BEB89DD74AD00A05C88DC237F82B7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				741D41EC1B9E0AFC4FCCF281FE02E489 /* ReplaceMe.swift in Sources */,
-				CCC88FF8C9D63FD0DBFD0AC0E089F08F /* Storage-dummy.m in Sources */,
+				45E7BDDF370E7DC9C0E742CBFEC05694 /* Storage-dummy.m in Sources */,
+				64526530D741DABFC0C8BEC7DC9FE1AF /* Storage.swift in Sources */,
+				91621CF35820FDB0E1C794B748338FDA /* StorageType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +360,7 @@
 /* Begin XCBuildConfiguration section */
 		2FAB7E34BEEFA368D4D53A5058F3C3A0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB2259F5622C5D354773D30E3C0F4B88 /* Storage.xcconfig */;
+			baseConfigurationReference = DFA14318BEEC26A628C3E37697BA5BD2 /* Storage.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -529,6 +533,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -603,7 +608,7 @@
 		};
 		DC821F13716771FAE1FB2314FBD1B878 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB2259F5622C5D354773D30E3C0F4B88 /* Storage.xcconfig */;
+			baseConfigurationReference = DFA14318BEEC26A628C3E37697BA5BD2 /* Storage.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
