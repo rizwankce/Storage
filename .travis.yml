@@ -30,6 +30,12 @@ before_install:
   - pod install --project-directory=Example
 
 script:
-- pod lib lint
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace "$WORKSPACE" -scheme "$IOS_SCHEME" -sdk "$IOS_SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty
-
+- if [ $POD_LINT == "YES" ]; then
+      pod lib lint;
+  fi
+  
+- if [ $RUN_TESTS == "YES" ]; then
+      xcodebuild analyze test -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+  else
+      xcodebuild build analyze -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+  fi
