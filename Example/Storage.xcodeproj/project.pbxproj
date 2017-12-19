@@ -327,11 +327,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Storage_Example/Pods-Storage_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Storage/Storage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftStorage/SwiftStorage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Storage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftStorage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
