@@ -1,9 +1,9 @@
 # Storage
 
 [![CI Status](http://img.shields.io/travis/rizwankce/Storage.svg?style=flat)](https://travis-ci.org/rizwankce/Storage)
-[![Version](https://img.shields.io/cocoapods/v/Storage.svg?style=flat)](http://cocoapods.org/pods/SwiftStorage)
-[![License](https://img.shields.io/cocoapods/l/Storage.svg?style=flat)](http://cocoapods.org/pods/SwiftStorage)
-[![Platform](https://img.shields.io/cocoapods/p/Storage.svg?style=flat)](http://cocoapods.org/pods/SwiftStorage)
+[![Version](https://img.shields.io/cocoapods/v/SwiftStorage.svg?style=flat)](http://cocoapods.org/pods/SwiftStorage)
+[![License](https://img.shields.io/cocoapods/l/SwiftStorage.svg?style=flat)](http://cocoapods.org/pods/SwiftStorage)
+[![Platform](https://img.shields.io/cocoapods/p/SwiftStorage.svg?style=flat)](http://cocoapods.org/pods/SwiftStorage)
 
 ## Example
 
