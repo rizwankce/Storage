@@ -4,7 +4,9 @@ import SwiftStorage
 class StorageTests: XCTestCase {
 
     func testSaveAndRetrieve() {
-        let storage = Storage<[String]>(storageType: .document, filename: "test.json")
+        let tempDir = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        try? FileManager.default.createDirectory(at: tempDir, withIntermediateDirectories: true, attributes: nil)
+        let storage = Storage<[String]>(storageType: .custom(tempDir), filename: "test.json")
         let testData = ["item1", "item2", "item3"]
         storage.save(testData)
 
