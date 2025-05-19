@@ -11,6 +11,7 @@ class StorageTests: XCTestCase {
 
         let retrievedData = storage.storedValue
         XCTAssertEqual(retrievedData, testData, "Stored and retrieved data should be equal")
+        storage.clear()
     }
 
     func testRetrieveNonExistentFile() {
@@ -29,6 +30,7 @@ class StorageTests: XCTestCase {
 
         let retrievedData = storage.storedValue
         XCTAssertEqual(retrievedData, newData, "Stored and retrieved data should be equal after overwrite")
+        storage.clear()
     }
 
     func testSaveAndRetrieveUserDefaults() {
@@ -39,12 +41,14 @@ class StorageTests: XCTestCase {
 
         let retrievedData = storage.storedValue
         XCTAssertEqual(retrievedData, testData, "Stored and retrieved data should be equal for user defaults")
+        storage.clear()
     }
 
     func testRetrieveNonExistentUserDefaults() {
         let storage = Storage<[String]>(storageType: .userDefaults, filename: "nonexistentUserDefaults")
         let retrievedData = storage.storedValue
         XCTAssertNil(retrievedData, "Retrieving non-existent data from user defaults should return nil")
+        storage.clear()
     }
 
     func testOverwriteUserDefaultsData() {
@@ -57,5 +61,6 @@ class StorageTests: XCTestCase {
 
         let retrievedData = storage.storedValue
         XCTAssertEqual(retrievedData, newData, "Stored and retrieved data should be equal after overwrite in user defaults")
+        storage.clear()
     }
 }

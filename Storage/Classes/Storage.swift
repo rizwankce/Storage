@@ -73,7 +73,12 @@ public final class Storage<T> where T: Codable {
         try? fileManager.createDirectory(at: folder, withIntermediateDirectories: false, attributes: nil)
     }
 
-    private func clearStorage() {
-        try? FileManager.default.removeItem(at: type.folder)
+    public func clear() {
+        switch type {
+            case .cache, .document:
+                try? FileManager.default.removeItem(at: type.folder)
+            case .userDefaults:
+                UserDefaults.standard.removeObject(forKey: type.userDefaultsKey)
+        }
     }
 }

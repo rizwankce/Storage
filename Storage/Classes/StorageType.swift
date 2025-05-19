@@ -7,13 +7,14 @@ public enum StorageType {
 
     public var searchPathDirectory: FileManager.SearchPathDirectory {
         switch self {
-        case .cache: return .cachesDirectory
-        case .document: return .documentDirectory
-        case .userDefaults: fatalError("UserDefaults does not have a search path directory")
+            case .cache: return .cachesDirectory
+            case .document: return .documentDirectory
+            case .userDefaults: return .cachesDirectory
         }
     }
 
     public var folder: URL {
+
         guard let path = NSSearchPathForDirectoriesInDomains(searchPathDirectory, .userDomainMask, true).first else {
             fatalError("Cannot find the path directory for storage")
         }
