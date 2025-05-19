@@ -1,11 +1,3 @@
-//
-//  Storage.swift
-//  Storage
-//
-//  Created by Rizwan on 02/11/17.
-//  Copyright © 2017 Rizwan. All rights reserved.
-//
-
 import Foundation
 
 public final class Storage<T> where T: Codable {
@@ -21,23 +13,42 @@ public final class Storage<T> where T: Codable {
     public func save(_ object: T) {
         do {
             let data = try JSONEncoder().encode(object)
-            try data.write(to: fileURL)
+            switch type {
+            case .cache, .document:
+                try data.write(to: fileURL)
+            case .userDefaults:
+                UserDefaults.standard.set(data, forKey: type.userDefaultsKey)
+            }
         } catch let e {
             print("ERROR: \(e)")
         }
     }
 
     public var storedValue: T? {
-        guard FileManager.default.fileExists(atPath: fileURL.path) else {
-            return nil
-        }
-        do {
-            let data = try Data(contentsOf: fileURL)
-            let jsonDecoder = JSONDecoder()
-            return try jsonDecoder.decode(T.self, from: data)
-        } catch let e {
-            print("ERROR: \(e)")
-            return nil
+        switch type {
+        case .cache, .document:
+            guard FileManager.default.fileExists(atPath: fileURL.path) else {
+                return nil
+            }
+            do {
+                let data = try Data(contentsOf: fileURL)
+                let jsonDecoder = JSONDecoder()
+                return try jsonDecoder.decode(T.self, from: data)
+            } catch let e {
+                print("ERROR: \(e)")
+                return nil
+            }
+        case .userDefaults:
+            guard let data = UserDefaults.standard.data(forKey: type.userDefaultsKey) else {
+                return nil
+            }
+            do {
+                let jsonDecoder = JSONDecoder()
+                return try jsonDecoder.decode(T.self, from: data)
+            } catch let e {
+                print("ERROR: \(e)")
+                return nil
+            }
         }
     }
 
