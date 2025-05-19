@@ -1,9 +1,11 @@
+// swift-tools-version: 6.1
+
 import PackageDescription
 
 let package = Package(
     name: "SwiftStorage",
     platforms: [
-        .iOS(.v8)
+        .iOS(.v12)
     ],
     products: [
         .library(
@@ -15,6 +17,11 @@ let package = Package(
         .target(
             name: "SwiftStorage",
             dependencies: [],
-            path: "Storage/Classes")
+            path: "Storage/Classes"),
+        .testTarget(
+            name: "SwiftStorageTests",
+            dependencies: ["SwiftStorage"],
+            path: "Tests"
+        )
     ]
 )
