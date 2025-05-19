@@ -57,17 +57,23 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-#### CocoaPods
-[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command in terminal:
+#### Swift Package Manager
+The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
 
+To integrate Swift Storage into your Xcode project using Swift Package Manager, add the following as a dependency to your Package.swift:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/rizwankce/Storage.git", from: "0.1.0")
+]
 ```
-$ gem install cocoapods
-```
 
-To integrate Swift Storage into your Xcode project using CocoaPods, simply add the following line to your Podfile:
+Then, add `SwiftStorage` as a dependency of your target:
 
-```ruby
-pod 'SwiftStorage'
+```swift
+.target(
+    name: "YourTargetName",
+    dependencies: ["SwiftStorage"]),
 ```
 
 ## Contributing
