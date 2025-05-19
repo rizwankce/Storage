@@ -12,14 +12,14 @@ public enum StorageType {
     case cache
     case document
 
-    var searchPathDirectory: FileManager.SearchPathDirectory {
+    public var searchPathDirectory: FileManager.SearchPathDirectory {
         switch self {
         case .cache: return .cachesDirectory
         case .document: return .documentDirectory
         }
     }
 
-    var folder: URL {
+    public var folder: URL {
         guard let path = NSSearchPathForDirectoriesInDomains(searchPathDirectory, .userDomainMask, true).first else {
             fatalError("Cannot find the path directory for storage")
         }
