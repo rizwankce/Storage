@@ -1,12 +1,5 @@
-//
-//  Storage.swift
-//  Storage
-//
-//  Created by Rizwan on 02/11/17.
-//  Copyright © 2017 Rizwan. All rights reserved.
-//
-
 import Foundation
+import CoreLocation
 
 public final class Storage<T> where T: Codable {
     private let type: StorageType
@@ -64,5 +57,28 @@ public final class Storage<T> where T: Codable {
 
     private func clearStorage() {
         try? FileManager.default.removeItem(at: type.folder)
+    }
+}
+
+extension Storage where T == CLLocation {
+    public func saveLocation(_ location: CLLocation) {
+        let locationData = LocationData(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, altitude: location.altitude, horizontalAccuracy: location.horizontalAccuracy, verticalAccuracy: location.verticalAccuracy, timestamp: location.timestamp)
+        save(locationData)
+    }
+
+    public var storedLocation: CLLocation? {
+        guard let locationData: LocationData = storedValue else {
+            return nil
+        }
+        return CLLocation(coordinate: CLLocationCoordinate2D(latitude: locationData.latitude, longitude: locationData.longitude), altitude: locationData.altitude, horizontalAccuracy: locationData.horizontalAccuracy, verticalAccuracy: locationData.verticalAccuracy, timestamp: locationData.timestamp)
+    }
+
+    private struct LocationData: Codable {
+        let latitude: Double
+        let longitude: Double
+        let altitude: Double
+        let horizontalAccuracy: Double
+        let verticalAccuracy: Double
+        let timestamp: Date
     }
 }

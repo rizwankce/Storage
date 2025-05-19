@@ -1,5 +1,6 @@
 import XCTest
 import SwiftStorage
+import CoreLocation
 
 class StorageTests: XCTestCase {
 
@@ -29,5 +30,22 @@ class StorageTests: XCTestCase {
 
         let retrievedData = storage.storedValue
         XCTAssertEqual(retrievedData, newData, "Stored and retrieved data should be equal after overwrite")
+    }
+
+    func testSaveAndRetrieveLocation() {
+        let storage = Storage<CLLocation>(storageType: .document, filename: "location.json")
+        
+        let testLocation = CLLocation(latitude: 37.7749, longitude: -122.4194)
+        storage.saveLocation(testLocation)
+
+        let retrievedLocation = storage.storedLocation
+        XCTAssertEqual(retrievedLocation?.coordinate.latitude, testLocation.coordinate.latitude, "Stored and retrieved latitude should be equal")
+        XCTAssertEqual(retrievedLocation?.coordinate.longitude, testLocation.coordinate.longitude, "Stored and retrieved longitude should be equal")
+    }
+
+    func testRetrieveNonExistentLocation() {
+        let storage = Storage<CLLocation>(storageType: .document, filename: "nonexistent_location.json")
+        let retrievedLocation = storage.storedLocation
+        XCTAssertNil(retrievedLocation, "Retrieving a non-existent location should return nil")
     }
 }
