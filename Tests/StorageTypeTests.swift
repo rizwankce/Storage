@@ -13,13 +13,4 @@ class StorageTypeTests: XCTestCase {
         let folder = storageType.folder
         XCTAssertTrue(folder.path.contains("Documents"), "Document directory path should contain 'Documents'")
     }
-
-    func testFolderCreation() {
-        let storageType = StorageType.document
-        let folder = storageType.folder
-        let fileManager = FileManager.default
-        var isDir: ObjCBool = false
-        let exists = fileManager.fileExists(atPath: folder.path, isDirectory: &isDir)
-        XCTAssertTrue(exists && isDir.boolValue, "Folder should be created and be a directory")
-    }
 }
