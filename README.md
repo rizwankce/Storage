@@ -1,25 +1,20 @@
 # Swift Storage
 
-[![CI Status](http://img.shields.io/travis/rizwankce/Storage.svg?style=flat)](https://travis-ci.org/rizwankce/Storage)
-[![Version](https://img.shields.io/cocoapods/v/SwiftStorage.svg?style=flat)](http://cocoapods.org/pods/SwiftStorage)
-[![License](https://img.shields.io/cocoapods/l/SwiftStorage.svg?style=flat)](http://cocoapods.org/pods/SwiftStorage)
-[![Platform](https://img.shields.io/cocoapods/p/SwiftStorage.svg?style=flat)](http://cocoapods.org/pods/SwiftStorage)
-
 If you are using `Coadble` protocol from Swift 4 and needs an easy way to store and retrieve your objects, You are in the right place. Swift Storage is a simple extension to store/retrieve your `Coadble` objects.
 
 ## Features
 
- - [ ] Store Codable objects
- - [ ] Retrieve stored Coadble objects
- - [ ] Store Locations
-  - [ ] Cache
-  - [ ] Documents
-  - [ ] User Default
-  - [ ] CloudKit
-  - [ ] NSUbiquitousKeyValueStore
- - [ ] Name Spaced Stores
- - [ ] Comprehensive Unit and Integration Test Coverage
- - [ ] Complete Documentation
+    - [x] Store Codable objects
+    - [x] Retrieve stored Coadble objects
+    - [ ] Store Locations
+    - [ ] Cache
+    - [ ] Documents
+    - [ ] User Default
+    - [ ] CloudKit
+    - [ ] NSUbiquitousKeyValueStore
+    - [ ] Name Spaced Stores
+    - [ ] Comprehensive Unit and Integration Test Coverage
+    - [ ] Complete Documentation
 
 ## Usage
 
