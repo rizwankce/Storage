@@ -63,14 +63,26 @@ public final class Storage<T> where T: Codable {
 extension Storage where T == CLLocation {
     public func saveLocation(_ location: CLLocation) {
         let locationData = LocationData(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, altitude: location.altitude, horizontalAccuracy: location.horizontalAccuracy, verticalAccuracy: location.verticalAccuracy, timestamp: location.timestamp)
-        save(locationData)
+        do {
+            let data = try JSONEncoder().encode(locationData)
+            try data.write(to: fileURL)
+        } catch let e {
+            print("ERROR: \(e)")
+        }
     }
 
     public var storedLocation: CLLocation? {
-        guard let locationData: LocationData = storedValue else {
+        guard FileManager.default.fileExists(atPath: fileURL.path) else {
             return nil
         }
-        return CLLocation(coordinate: CLLocationCoordinate2D(latitude: locationData.latitude, longitude: locationData.longitude), altitude: locationData.altitude, horizontalAccuracy: locationData.horizontalAccuracy, verticalAccuracy: locationData.verticalAccuracy, timestamp: locationData.timestamp)
+        do {
+            let data = try Data(contentsOf: fileURL)
+            let locationData = try JSONDecoder().decode(LocationData.self, from: data)
+            return CLLocation(coordinate: CLLocationCoordinate2D(latitude: locationData.latitude, longitude: locationData.longitude), altitude: locationData.altitude, horizontalAccuracy: locationData.horizontalAccuracy, verticalAccuracy: locationData.verticalAccuracy, timestamp: locationData.timestamp)
+        } catch let e {
+            print("ERROR: \(e)")
+            return nil
+        }
     }
 
     private struct LocationData: Codable {
