@@ -2,18 +2,6 @@ import XCTest
 import SwiftStorage
 
 class StorageTypeTests: XCTestCase {
-    override func tearDown() {
-        super.tearDown()
-        let fileManager = FileManager.default
-        let storageTypes: [StorageType] = [.cache, .document]
-        for storageType in storageTypes {
-            let folder = storageType.folder
-            if fileManager.fileExists(atPath: folder.path) {
-                try? fileManager.removeItem(at: folder)
-            }
-        }
-    }
-
     func testCacheDirectory() {
         let storageType = StorageType.cache
         let folder = storageType.folder
