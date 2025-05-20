@@ -2,6 +2,8 @@ import Foundation
 
 /// A class that provides a simple way to store and retrieve Codable objects.
 /// The `Storage` class supports different storage types such as cache, document, and user defaults.
+/// 
+/// - Generic T: The type of object to store; must conform to `Codable`.
 public final class Storage<T> where T: Codable {
     private let type: StorageType
     private let filename: String
