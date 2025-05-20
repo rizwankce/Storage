@@ -3,11 +3,11 @@ import Foundation
 /// An enumeration representing different types of storage options.
 /// The `StorageType` enum provides cases for cache, document, and user defaults storage.
 public enum StorageType {
-    /// Cache storage type, which stores data in the cache directory.
+    /// `cache` storage type, which stores data in the cache directory.
     case cache
-    /// Document storage type, which stores data in the document directory.
+    /// `document` storage type, which stores data in the document directory.
     case document
-    /// User defaults storage type, which stores data in the user defaults.
+    /// `userDefaults` storage type, which stores data in the user defaults.
     case userDefaults
 
     /// The search path directory associated with each storage type.
