@@ -22,6 +22,8 @@ public enum StorageType {
 
     /// The folder URL associated with each storage type.
     /// This property constructs the folder URL for each storage type.
+    /// - Note: This property will call `fatalError` if the directory lookup fails,
+    ///         as a missing path is considered a precondition failure.
     public var folder: URL {
         guard let path = NSSearchPathForDirectoriesInDomains(searchPathDirectory, .userDomainMask, true).first else {
             fatalError("Cannot find the path directory for storage")
