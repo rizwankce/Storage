@@ -30,9 +30,11 @@ public final class Storage<T> where T: Codable {
                 try data.write(to: fileURL)
             case .userDefaults:
                 UserDefaults.standard.set(data, forKey: type.userDefaultsKey)
+            case .ubiquitousKeyValueStore:
+                NSUbiquitousKeyValueStore.default.set(data, forKey: filename)
             }
         } catch let e {
-            print("ERROR: \(e)")
+            print("ERROR: Saving data: \(e)")
         }
     }
 
@@ -50,7 +52,7 @@ public final class Storage<T> where T: Codable {
                 let jsonDecoder = JSONDecoder()
                 return try jsonDecoder.decode(T.self, from: data)
             } catch let e {
-                print("ERROR: \(e)")
+                print("ERROR: Decoding data for cache/document: \(e)")
                 return nil
             }
         case .userDefaults:
@@ -61,7 +63,18 @@ public final class Storage<T> where T: Codable {
                 let jsonDecoder = JSONDecoder()
                 return try jsonDecoder.decode(T.self, from: data)
             } catch let e {
-                print("ERROR: \(e)")
+                print("ERROR: Decoding data for userDefaults: \(e)")
+                return nil
+            }
+        case .ubiquitousKeyValueStore:
+            guard let data = NSUbiquitousKeyValueStore.default.data(forKey: filename) else {
+                return nil
+            }
+            do {
+                let jsonDecoder = JSONDecoder()
+                return try jsonDecoder.decode(T.self, from: data)
+            } catch let e {
+                print("ERROR: Decoding data for ubiquitousKeyValueStore: \(e)")
                 return nil
             }
         }
@@ -98,6 +111,8 @@ public final class Storage<T> where T: Codable {
                 try? FileManager.default.removeItem(at: type.folder)
             case .userDefaults:
                 UserDefaults.standard.removeObject(forKey: type.userDefaultsKey)
+            case .ubiquitousKeyValueStore:
+                NSUbiquitousKeyValueStore.default.removeObject(forKey: filename)
         }
     }
 }

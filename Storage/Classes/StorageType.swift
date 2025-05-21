@@ -9,6 +9,8 @@ public enum StorageType {
     case document
     /// `userDefaults` storage type, which stores data in the user defaults.
     case userDefaults
+    /// `ubiquitousKeyValueStore` storage type, which stores data in iCloud key-value store.
+    case ubiquitousKeyValueStore
 
     /// The search path directory associated with each storage type.
     /// This property determines the appropriate `FileManager.SearchPathDirectory` for each case.
@@ -17,6 +19,7 @@ public enum StorageType {
             case .cache: return .cachesDirectory
             case .document: return .documentDirectory
             case .userDefaults: return .cachesDirectory
+            case .ubiquitousKeyValueStore: return .cachesDirectory // Or consider a more specific handling if needed
         }
     }
 
