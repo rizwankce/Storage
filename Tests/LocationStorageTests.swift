@@ -1,6 +1,5 @@
 import XCTest
 import CoreLocation
-@testable import Storage
 
 class LocationStorageTests: XCTestCase {
 
