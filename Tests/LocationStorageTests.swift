@@ -1,4 +1,5 @@
 import XCTest
+import SwiftStorage
 import CoreLocation
 
 class LocationStorageTests: XCTestCase {
@@ -8,8 +9,7 @@ class LocationStorageTests: XCTestCase {
     var userDefaultsLocationStorage: LocationStorage!
 
     let sampleLocation = CLLocation(
-        latitude: 37.334803,
-        longitude: -122.008965,
+        coordinate: CLLocationCoordinate2D(latitude: 37.334803, longitude: -122.008965),
         altitude: 10.0,
         horizontalAccuracy: 5.0,
         verticalAccuracy: 5.0,
@@ -105,7 +105,7 @@ class LocationStorageTests: XCTestCase {
 
     // MARK: - Helper
     
-    private func assertEqualLocations(_ loc1: CLLocation?, _ loc2: CLLocation?, file: StaticString = #file, line: UInt = #line) {
+    private func assertEqualLocations(_ loc1: CLLocation?, _ loc2: CLLocation?, file: StaticString = #filePath, line: UInt = #line) {
         guard let loc1 = loc1, let loc2 = loc2 else {
             XCTFail("One or both locations are nil.", file: file, line: line)
             return
