@@ -11,7 +11,7 @@ If you are using `Coadble` protocol from Swift 4 and needs an easy way to store 
 - [x] Documents
 - [x] User Default
 - [ ] CloudKit
-- [ ] NSUbiquitousKeyValueStore
+- [x] NSUbiquitousKeyValueStore
 - [ ] Name Spaced Stores
 - [x] Comprehensive Unit and Integration Test Coverage
 - [ ] Complete Documentation
