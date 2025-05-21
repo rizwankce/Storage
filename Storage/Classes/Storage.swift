@@ -27,9 +27,10 @@ public final class Storage<T> where T: Codable {
             let data = try JSONEncoder().encode(object)
             switch type {
             case .cache, .document:
+                createFolderIfNotExists()
                 try data.write(to: fileURL)
-            case .userDefaults:
-                UserDefaults.standard.set(data, forKey: type.userDefaultsKey)
+        case .userDefaults:
+            UserDefaults.standard.set(data, forKey: userDefaultsKey)
             }
         } catch let e {
             print("ERROR: \(e)")
@@ -54,7 +55,7 @@ public final class Storage<T> where T: Codable {
                 return nil
             }
         case .userDefaults:
-            guard let data = UserDefaults.standard.data(forKey: type.userDefaultsKey) else {
+            guard let data = UserDefaults.standard.data(forKey: userDefaultsKey) else {
                 return nil
             }
             do {
@@ -77,6 +78,11 @@ public final class Storage<T> where T: Codable {
         return folder.appendingPathComponent(filename)
     }
 
+    /// The key used for storing data in UserDefaults for this storage instance.
+    private var userDefaultsKey: String {
+        return "\(type.userDefaultsKey).\(filename)"
+    }
+
     /// Creates the storage folder if it doesn't exist.
     private func createFolderIfNotExists() {
         let fileManager = FileManager.default
@@ -94,10 +100,10 @@ public final class Storage<T> where T: Codable {
     /// Clears the stored data from the specified storage type.
     public func clear() {
         switch type {
-            case .cache, .document:
-                try? FileManager.default.removeItem(at: type.folder)
-            case .userDefaults:
-                UserDefaults.standard.removeObject(forKey: type.userDefaultsKey)
+        case .cache, .document:
+            try? FileManager.default.removeItem(at: fileURL)
+        case .userDefaults:
+            UserDefaults.standard.removeObject(forKey: userDefaultsKey)
         }
     }
 }
