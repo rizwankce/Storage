@@ -6,15 +6,14 @@ If you are using `Coadble` protocol from Swift 4 and needs an easy way to store 
 
 - [x] Store Codable objects
 - [x] Retrieve stored Coadble objects
-- [ ] Store Locations
+- [x] Store Locations
 - [x] Cache
 - [x] Documents
 - [x] User Default
-- [ ] CloudKit
 - [x] NSUbiquitousKeyValueStore
 - [ ] Name Spaced Stores
 - [x] Comprehensive Unit and Integration Test Coverage
-- [ ] Complete Documentation
+- [x] Complete Documentation
 
 ## Usage
 
