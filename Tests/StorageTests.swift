@@ -9,18 +9,15 @@ private struct TestData: Codable, Equatable {
 
 class StorageTests: XCTestCase {
 
+    private var mockStore: MockKeyValueStore!
+    
+    override func setUp() {
+        super.setUp()
+        mockStore = MockKeyValueStore()
+    }
+    
     override func tearDown() {
-        // Clean up NSUbiquitousKeyValueStore after each test that might use it.
-        // This is to ensure a clean state for subsequent tests, as these values can persist.
-        // Note: This is a blanket cleanup. More targeted cleanup is done within tests using storage.clear().
-        // However, some tests might interact with NSUbiquitousKeyValueStore directly or leave residues if assertions fail before cleanup.
-        // For robust tests, ensure each test cleans up its own keys.
-        // This is a more aggressive cleanup for safety.
-        let store = NSUbiquitousKeyValueStore.default
-        store.dictionaryRepresentation.keys.forEach { key in
-            store.removeObject(forKey: key)
-        }
-        store.synchronize() // Ensure changes are written
+        mockStore = nil
         super.tearDown()
     }
 
@@ -89,62 +86,48 @@ class StorageTests: XCTestCase {
 
     func testSaveAndRetrieveUbiquitous() {
         let filename = "testUbiquitous.json"
-        let storage = Storage<TestData>(storageType: .ubiquitousKeyValueStore, filename: filename)
+        let storage = Storage<TestData>(storageType: .ubiquitousKeyValueStore, filename: filename, ubiquitousStore: mockStore)
         let testObject = TestData(id: 1, name: "Ubiquitous Test")
 
-        // Clear any potential leftover data from a previous failed run
-        NSUbiquitousKeyValueStore.default.removeObject(forKey: filename)
-        NSUbiquitousKeyValueStore.default.synchronize()
-
         storage.save(testObject)
-        // NSUbiquitousKeyValueStore can be eventually consistent. For testing, synchronize might help.
-        NSUbiquitousKeyValueStore.default.synchronize()
-        Thread.sleep(forTimeInterval: 0.2) // Allow time for synchronization
+        XCTAssertEqual(mockStore.setCallCount, 1, "Set should be called once")
+        XCTAssertEqual(mockStore.synchronizeCallCount, 1, "Synchronize should be called once")
 
         let retrievedObject = storage.storedValue
-        XCTAssertNotNil(retrievedObject, "Retrieved object should not be nil for ubiquitous store.")
-        XCTAssertEqual(retrievedObject, testObject, "Stored and retrieved object should be equal for ubiquitous store.")
+        XCTAssertNotNil(retrievedObject, "Retrieved object should not be nil for ubiquitous store")
+        XCTAssertEqual(retrievedObject, testObject, "Stored and retrieved object should be equal for ubiquitous store")
 
-        storage.clear() // This should remove the key
-        NSUbiquitousKeyValueStore.default.synchronize() // Ensure clear operation is synchronized
-        Thread.sleep(forTimeInterval: 0.2) // Allow time for synchronization
-        XCTAssertNil(NSUbiquitousKeyValueStore.default.object(forKey: filename), "Value should be cleared from NSUbiquitousKeyValueStore.")
+        storage.clear()
+        XCTAssertEqual(mockStore.removeCallCount, 1, "Remove should be called once")
+        XCTAssertEqual(mockStore.synchronizeCallCount, 2, "Synchronize should be called twice")
+        XCTAssertNil(storage.storedValue, "Value should be cleared from store")
     }
 
     func testRetrieveNonExistentUbiquitous() {
         let filename = "nonExistentUbiquitous.json"
-        // Ensure the key is not present before the test
-        NSUbiquitousKeyValueStore.default.removeObject(forKey: filename)
-        NSUbiquitousKeyValueStore.default.synchronize()
-
-        let storage = Storage<TestData>(storageType: .ubiquitousKeyValueStore, filename: filename)
+        let storage = Storage<TestData>(storageType: .ubiquitousKeyValueStore, filename: filename, ubiquitousStore: mockStore)
+        
         let retrievedObject = storage.storedValue
-
-        XCTAssertNil(retrievedObject, "Retrieving a non-existent object from ubiquitous store should return nil.")
+        XCTAssertNil(retrievedObject, "Retrieving a non-existent object from ubiquitous store should return nil")
     }
 
     func testClearUbiquitous() {
         let filename = "clearTestUbiquitous.json"
-        let storage = Storage<TestData>(storageType: .ubiquitousKeyValueStore, filename: filename)
+        let storage = Storage<TestData>(storageType: .ubiquitousKeyValueStore, filename: filename, ubiquitousStore: mockStore)
         let testObject = TestData(id: 2, name: "Clear Test Ubiquitous")
 
-        // Clear any potential leftover data
-        NSUbiquitousKeyValueStore.default.removeObject(forKey: filename)
-        NSUbiquitousKeyValueStore.default.synchronize()
-
         storage.save(testObject)
-        NSUbiquitousKeyValueStore.default.synchronize() // Ensure save is synchronized
-        Thread.sleep(forTimeInterval: 0.2) // Allow time for synchronization
+        XCTAssertEqual(mockStore.setCallCount, 1, "Set should be called once")
+        XCTAssertEqual(mockStore.synchronizeCallCount, 1, "Synchronize should be called once")
 
         // Verify it's there before clearing
-        XCTAssertNotNil(storage.storedValue, "Value should exist before clearing.")
+        XCTAssertNotNil(storage.storedValue, "Value should exist before clearing")
 
         storage.clear()
-        NSUbiquitousKeyValueStore.default.synchronize() // Ensure clear is synchronized
-        Thread.sleep(forTimeInterval: 0.2) // Allow time for synchronization
+        XCTAssertEqual(mockStore.removeCallCount, 1, "Remove should be called once")
+        XCTAssertEqual(mockStore.synchronizeCallCount, 2, "Synchronize should be called twice")
 
         let retrievedObject = storage.storedValue
-        XCTAssertNil(retrievedObject, "Retrieved object should be nil after clearing from ubiquitous store.")
-        XCTAssertNil(NSUbiquitousKeyValueStore.default.object(forKey: filename), "Value should be cleared from NSUbiquitousKeyValueStore directly.")
+        XCTAssertNil(retrievedObject, "Retrieved object should be nil after clearing from ubiquitous store")
     }
 }

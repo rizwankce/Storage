@@ -1,5 +1,15 @@
 import Foundation
 
+/// Protocol defining key-value store operations
+public protocol KeyValueStorable: AnyObject {
+    func set(_ value: Any?, forKey key: String)
+    func data(forKey key: String) -> Data?
+    func removeObject(forKey key: String)
+    func synchronize() -> Bool
+}
+
+extension NSUbiquitousKeyValueStore: KeyValueStorable {}
+
 /// A class that provides a simple way to store and retrieve Codable objects.
 /// The `Storage` class supports different storage types such as cache, document, and user defaults.
 /// 
@@ -7,13 +17,16 @@ import Foundation
 public final class Storage<T> where T: Codable {
     private let type: StorageType
     private let filename: String
+    private let ubiquitousStore: KeyValueStorable?
 
     /// Initializes a new instance of `Storage` with the specified storage type and filename.
     ///
     /// - Parameters:
     ///   - storageType: The type of storage to use (cache, document, or user defaults).
     ///   - filename: The name of the file to store the data.
-    public init(storageType: StorageType, filename: String) {
+    ///   - ubiquitousStore: Optional KeyValueStorable instance for .ubiquitousKeyValueStore type (defaults to NSUbiquitousKeyValueStore.default)
+    public init(storageType: StorageType, filename: String, ubiquitousStore: KeyValueStorable? = NSUbiquitousKeyValueStore.default) {
+        self.ubiquitousStore = ubiquitousStore
         self.type = storageType
         self.filename = filename
         createFolderIfNotExists()
@@ -31,7 +44,8 @@ public final class Storage<T> where T: Codable {
             case .userDefaults:
                 UserDefaults.standard.set(data, forKey: type.userDefaultsKey + ".\(filename)")
             case .ubiquitousKeyValueStore:
-                NSUbiquitousKeyValueStore.default.set(data, forKey: filename)
+                ubiquitousStore?.set(data, forKey: filename)
+                ubiquitousStore?.synchronize()
             }
         } catch let e {
             print("ERROR: Saving data: \(e)")
@@ -67,7 +81,8 @@ public final class Storage<T> where T: Codable {
                 return nil
             }
         case .ubiquitousKeyValueStore:
-            guard let data = NSUbiquitousKeyValueStore.default.data(forKey: filename) else {
+            guard let store = ubiquitousStore,
+                  let data = store.data(forKey: filename) else {
                 return nil
             }
             do {
@@ -112,7 +127,8 @@ public final class Storage<T> where T: Codable {
             case .userDefaults:
                 UserDefaults.standard.removeObject(forKey: type.userDefaultsKey + ".\(filename)")
             case .ubiquitousKeyValueStore:
-                NSUbiquitousKeyValueStore.default.removeObject(forKey: filename)
+                ubiquitousStore?.removeObject(forKey: filename)
+                ubiquitousStore?.synchronize()
         }
     }
 }
