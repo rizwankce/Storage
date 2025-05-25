@@ -27,6 +27,7 @@ public final class Storage<T> where T: Codable {
             let data = try JSONEncoder().encode(object)
             switch type {
             case .cache, .document:
+                createFolderIfNotExists()
                 try data.write(to: fileURL)
             case .userDefaults:
                 UserDefaults.standard.set(data, forKey: type.userDefaultsKey)
@@ -56,7 +57,7 @@ public final class Storage<T> where T: Codable {
                 return nil
             }
         case .userDefaults:
-            guard let data = UserDefaults.standard.data(forKey: type.userDefaultsKey) else {
+            guard let data = UserDefaults.standard.data(forKey: userDefaultsKey) else {
                 return nil
             }
             do {
@@ -88,6 +89,11 @@ public final class Storage<T> where T: Codable {
     /// The URL of the file where the data is stored.
     private var fileURL: URL {
         return folder.appendingPathComponent(filename)
+    }
+
+    /// The key used for storing data in UserDefaults for this storage instance.
+    private var userDefaultsKey: String {
+        return "\(type.userDefaultsKey).\(filename)"
     }
 
     /// Creates the storage folder if it doesn't exist.
