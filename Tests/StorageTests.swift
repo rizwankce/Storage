@@ -73,7 +73,7 @@ class StorageTests: XCTestCase {
     }
 
     func testOverwriteUserDefaultsData() {
-        let storage = Storage<[String]>(storageType: .userDefaults, filename: "testUserDefaults")
+        let storage = Storage<[String]>(storageType: .userDefaults, filename: "overwriteTestUserDefaults")
         let initialData = ["item1", "item2"]
         storage.save(initialData)
 
@@ -99,6 +99,7 @@ class StorageTests: XCTestCase {
         storage.save(testObject)
         // NSUbiquitousKeyValueStore can be eventually consistent. For testing, synchronize might help.
         NSUbiquitousKeyValueStore.default.synchronize()
+        Thread.sleep(forTimeInterval: 0.2) // Allow time for synchronization
 
         let retrievedObject = storage.storedValue
         XCTAssertNotNil(retrievedObject, "Retrieved object should not be nil for ubiquitous store.")
@@ -106,6 +107,7 @@ class StorageTests: XCTestCase {
 
         storage.clear() // This should remove the key
         NSUbiquitousKeyValueStore.default.synchronize() // Ensure clear operation is synchronized
+        Thread.sleep(forTimeInterval: 0.2) // Allow time for synchronization
         XCTAssertNil(NSUbiquitousKeyValueStore.default.object(forKey: filename), "Value should be cleared from NSUbiquitousKeyValueStore.")
     }
 
@@ -132,12 +134,14 @@ class StorageTests: XCTestCase {
 
         storage.save(testObject)
         NSUbiquitousKeyValueStore.default.synchronize() // Ensure save is synchronized
+        Thread.sleep(forTimeInterval: 0.2) // Allow time for synchronization
 
         // Verify it's there before clearing
         XCTAssertNotNil(storage.storedValue, "Value should exist before clearing.")
 
         storage.clear()
         NSUbiquitousKeyValueStore.default.synchronize() // Ensure clear is synchronized
+        Thread.sleep(forTimeInterval: 0.2) // Allow time for synchronization
 
         let retrievedObject = storage.storedValue
         XCTAssertNil(retrievedObject, "Retrieved object should be nil after clearing from ubiquitous store.")
