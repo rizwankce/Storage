@@ -51,6 +51,29 @@ class StorageTests: XCTestCase {
         storage.clear()
     }
 
+    func testSaveAfterClearDocument() {
+        let filename = "clearThenSave.json"
+        let storage = Storage<[String]>(storageType: .document, filename: filename)
+
+        // Save initial data
+        storage.save(["first"])
+        XCTAssertEqual(storage.storedValue, ["first"], "Initial data should be saved")
+
+        // Clear the storage
+        storage.clear()
+
+        // Save new data after clearing
+        let newData = ["second", "third"]
+        storage.save(newData)
+
+        // Verify the new data can be retrieved
+        let retrieved = storage.storedValue
+        XCTAssertEqual(retrieved, newData, "Data saved after clear should be retrievable")
+
+        // Cleanup created storage
+        storage.clear()
+    }
+
     func testSaveAndRetrieveUserDefaults() {
         let storage = Storage<[String]>(storageType: .userDefaults, filename: "testUserDefaults")
         
