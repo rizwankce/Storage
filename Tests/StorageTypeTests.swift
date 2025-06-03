@@ -5,7 +5,8 @@ class StorageTypeTests: XCTestCase {
     func testCacheDirectory() {
         let storageType = StorageType.cache
         let folder = storageType.folder
-        XCTAssertTrue(folder.path.contains("Caches"), "Cache directory path should contain 'Caches'")
+        let path = folder.path
+        XCTAssertTrue(path.contains("Caches") || path.contains(".cache"), "Cache directory path should contain 'Caches' on Darwin or '.cache' on Linux")
     }
 
     func testDocumentDirectory() {
