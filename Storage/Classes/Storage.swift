@@ -13,7 +13,7 @@ extension NSUbiquitousKeyValueStore: KeyValueStorable {}
 #endif
 
 /// A class that provides a simple way to store and retrieve Codable objects.
-/// The `Storage` class supports different storage types such as cache, document, and user defaults.
+/// The `Storage` class supports different storage types such as cache, document, user defaults, and ubiquitous key-value store.
 /// 
 /// - Generic T: The type of object to store; must conform to `Codable`.
 public final class Storage<T> where T: Codable {
