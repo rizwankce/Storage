@@ -12,6 +12,7 @@ class StorageTypeTests: XCTestCase {
     func testDocumentDirectory() {
         let storageType = StorageType.document
         let folder = storageType.folder
-        XCTAssertTrue(folder.path.contains("Documents"), "Document directory path should contain 'Documents'")
+        let expected = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        XCTAssertTrue(folder.path.hasPrefix(expected), "Document directory should be inside the system documents directory")
     }
 }

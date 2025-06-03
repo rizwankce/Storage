@@ -13,7 +13,7 @@ extension NSUbiquitousKeyValueStore: KeyValueStorable {}
 #endif
 
 /// A class that provides a simple way to store and retrieve Codable objects.
-/// The `Storage` class supports different storage types such as cache, document, and user defaults.
+/// The `Storage` class supports different storage types such as cache, document, user defaults, and ubiquitous key-value store.
 /// 
 /// - Generic T: The type of object to store; must conform to `Codable`.
 public final class Storage<T> where T: Codable {
@@ -36,7 +36,6 @@ public final class Storage<T> where T: Codable {
         createFolderIfNotExists()
     }
 #else
-    /// Defaults to `nil` on non-Darwin platforms.
     public init(storageType: StorageType, filename: String, ubiquitousStore: KeyValueStorable? = nil) {
         self.ubiquitousStore = ubiquitousStore
         self.type = storageType
@@ -138,7 +137,7 @@ public final class Storage<T> where T: Codable {
     public func clear() {
         switch type {
             case .cache, .document:
-                try? FileManager.default.removeItem(at: type.folder)
+                try? FileManager.default.removeItem(at: fileURL)
             case .userDefaults:
                 UserDefaults.standard.removeObject(forKey: type.userDefaultsKey + ".\(filename)")
             case .ubiquitousKeyValueStore:
