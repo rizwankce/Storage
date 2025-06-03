@@ -8,7 +8,9 @@ public protocol KeyValueStorable: AnyObject {
     func synchronize() -> Bool
 }
 
+#if canImport(Darwin)
 extension NSUbiquitousKeyValueStore: KeyValueStorable {}
+#endif
 
 /// A class that provides a simple way to store and retrieve Codable objects.
 /// The `Storage` class supports different storage types such as cache, document, and user defaults.
@@ -24,13 +26,22 @@ public final class Storage<T> where T: Codable {
     /// - Parameters:
     ///   - storageType: The type of storage to use (cache, document, or user defaults).
     ///   - filename: The name of the file to store the data.
-    ///   - ubiquitousStore: Optional KeyValueStorable instance for .ubiquitousKeyValueStore type (defaults to NSUbiquitousKeyValueStore.default)
+    ///   - ubiquitousStore: Optional KeyValueStorable instance for .ubiquitousKeyValueStore type (defaults to platform specific store if available)
+#if canImport(Darwin)
     public init(storageType: StorageType, filename: String, ubiquitousStore: KeyValueStorable? = NSUbiquitousKeyValueStore.default) {
         self.ubiquitousStore = ubiquitousStore
         self.type = storageType
         self.filename = filename
         createFolderIfNotExists()
     }
+#else
+    public init(storageType: StorageType, filename: String, ubiquitousStore: KeyValueStorable? = nil) {
+        self.ubiquitousStore = ubiquitousStore
+        self.type = storageType
+        self.filename = filename
+        createFolderIfNotExists()
+    }
+#endif
 
     /// Saves the given object to the specified storage type.
     ///
@@ -116,7 +127,7 @@ public final class Storage<T> where T: Codable {
 
             try? FileManager.default.removeItem(at: folder)
         }
-        try? fileManager.createDirectory(at: folder, withIntermediateDirectories: false, attributes: nil)
+        try? fileManager.createDirectory(at: folder, withIntermediateDirectories: true, attributes: nil)
     }
 
     /// Clears the stored data from the specified storage type.
