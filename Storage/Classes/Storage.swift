@@ -26,8 +26,9 @@ public final class Storage<T> where T: Codable {
     /// - Parameters:
     ///   - storageType: The type of storage to use (cache, document, or user defaults).
     ///   - filename: The name of the file to store the data.
-    ///   - ubiquitousStore: Optional KeyValueStorable instance for .ubiquitousKeyValueStore type (defaults to platform specific store if available)
+    ///   - ubiquitousStore: Optional KeyValueStorable instance for `.ubiquitousKeyValueStore` type.
 #if canImport(Darwin)
+    /// Defaults to `NSUbiquitousKeyValueStore.default` on Darwin platforms.
     public init(storageType: StorageType, filename: String, ubiquitousStore: KeyValueStorable? = NSUbiquitousKeyValueStore.default) {
         self.ubiquitousStore = ubiquitousStore
         self.type = storageType
@@ -51,6 +52,8 @@ public final class Storage<T> where T: Codable {
             let data = try JSONEncoder().encode(object)
             switch type {
             case .cache, .document:
+                // Ensure the directory exists in case it was removed by `clear()`
+                createFolderIfNotExists()
                 try data.write(to: fileURL)
             case .userDefaults:
                 UserDefaults.standard.set(data, forKey: type.userDefaultsKey + ".\(filename)")

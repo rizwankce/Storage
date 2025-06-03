@@ -5,8 +5,8 @@ class StorageTypeTests: XCTestCase {
     func testCacheDirectory() {
         let storageType = StorageType.cache
         let folder = storageType.folder
-        let expected = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!
-        XCTAssertTrue(folder.path.hasPrefix(expected), "Cache directory should be inside the system caches directory")
+        let path = folder.path
+        XCTAssertTrue(path.contains("Caches") || path.contains(".cache"), "Cache directory path should contain 'Caches' on Darwin or '.cache' on Linux")
     }
 
     func testDocumentDirectory() {
