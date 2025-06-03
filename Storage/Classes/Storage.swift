@@ -134,7 +134,7 @@ public final class Storage<T> where T: Codable {
     public func clear() {
         switch type {
             case .cache, .document:
-                try? FileManager.default.removeItem(at: type.folder)
+                try? FileManager.default.removeItem(at: fileURL)
             case .userDefaults:
                 UserDefaults.standard.removeObject(forKey: type.userDefaultsKey + ".\(filename)")
             case .ubiquitousKeyValueStore:
