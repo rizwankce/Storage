@@ -1,11 +1,11 @@
 # Swift Storage
 
-If you are using `Coadble` protocol from Swift 4 and needs an easy way to store and retrieve your objects, You are in the right place. Swift Storage is a simple extension to store/retrieve your `Coadble` objects.
+If you are using `Codable` protocol from Swift 4 and needs an easy way to store and retrieve your objects, You are in the right place. Swift Storage is a simple extension to store/retrieve your `Codable` objects.
 
 ## Features
 
 - [x] Store Codable objects
-- [x] Retrieve stored Coadble objects
+- [x] Retrieve stored Codable objects
 - [x] Store Locations
 - [x] Cache
 - [x] Documents
@@ -17,7 +17,7 @@ If you are using `Coadble` protocol from Swift 4 and needs an easy way to store 
 
 ## Usage
 
-Considering you have a Coadble `Job` struct like below
+Considering you have a Codable `Job` struct like below
 
 ```swift
 struct Job: Codable {
@@ -78,7 +78,7 @@ Please note that this project is released with a Contributor Code of Conduct. By
 
 ## Credits
 
-The idea of Swift Storage is orginally came from Ben Scheirman from [NSScreenCast](http://nsscreencast.com/) and most of the code is inspired from one of his series and extended a little with more options.
+The idea of Swift Storage is originally came from Ben Scheirman from [NSScreenCast](http://nsscreencast.com/) and most of the code is inspired from one of his series and extended a little with more options.
 
 ## License
 
